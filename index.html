@@ -1,1407 +1,609 @@
 <!DOCTYPE html>
-
 <html lang="zh-Hant">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>安妤 AI｜財富與房產活化助理</title>
+<title>安妤 AI｜超業教練</title>
 
 <style>
-
 *{box-sizing:border-box}
 
 body{
-
   margin:0;
-
   background:#f6f1f7;
-
   color:#292331;
-
   font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft JhengHei",sans-serif;
-
 }
 
 .wrap{
-
   max-width:680px;
-
   margin:auto;
-
-  padding:18px 16px 60px;
-
-}
-
-.card{
-
-  background:#fff;
-
-  border-radius:28px;
-
-  padding:24px;
-
-  margin-bottom:18px;
-
-  box-shadow:0 6px 25px rgba(70,40,80,.06);
-
+  padding:20px 16px 60px;
 }
 
 .hero{
-
-  padding:28px 24px;
-
+  background:white;
+  border-radius:28px;
+  padding:28px 22px;
+  margin-bottom:18px;
+  box-shadow:0 8px 30px rgba(80,60,100,.08);
 }
 
 h1{
-
+  margin:0;
   font-size:30px;
-
-  margin:0 0 20px;
-
 }
 
 h2{
-
-  font-size:23px;
-
   margin:0 0 18px;
-
+  font-size:23px;
 }
 
-h3{
-
-  margin:0 0 8px;
-
+.sub{
+  color:#777;
+  margin-top:8px;
 }
 
-p{
-
-  line-height:1.7;
-
-}
-
-.small{
-
-  color:#81788a;
-
-  font-size:14px;
-
-}
-
-.btn{
-
-  border:0;
-
-  border-radius:16px;
-
-  padding:13px 18px;
-
-  font-size:16px;
-
-  font-weight:700;
-
-  cursor:pointer;
-
-}
-
-.primary{
-
-  background:#73508a;
-
-  color:#fff;
-
-}
-
-.light{
-
-  background:#f5eff7;
-
-  color:#68477d;
-
-}
-
-.green{
-
-  background:#dff8cf;
-
-  color:#315b2c;
-
-}
-
-.red{
-
-  background:#ffe8e8;
-
-  color:#9a3b3b;
-
-}
-
-input,textarea,select{
-
-  width:100%;
-
-  padding:14px 15px;
-
-  border:1px solid #ddd5e2;
-
-  border-radius:15px;
-
-  font-size:16px;
-
-  margin-bottom:10px;
-
-  background:#fff;
-
-}
-
-textarea{
-
-  min-height:100px;
-
-  resize:vertical;
-
+.card{
+  background:white;
+  border-radius:24px;
+  padding:22px;
+  margin-bottom:18px;
+  box-shadow:0 8px 30px rgba(80,60,100,.07);
 }
 
 .grid{
-
   display:grid;
-
   grid-template-columns:1fr 1fr;
-
   gap:12px;
-
 }
 
-.menuBtn{
-
-  width:100%;
-
-  min-height:72px;
-
+button{
   border:0;
-
-  border-radius:20px;
-
-  background:#f7f1f8;
-
-  color:#0877df;
-
-  font-size:18px;
-
-  font-weight:800;
-
+  border-radius:18px;
+  padding:15px 12px;
+  font-size:16px;
+  font-weight:700;
+  background:#f4eff8;
+  color:#3c3150;
+  cursor:pointer;
 }
 
-.menuBtn span{
+button:active{
+  transform:scale(.98);
+}
 
-  display:block;
+.primary{
+  background:#75518b;
+  color:white;
+}
 
-  font-size:27px;
+input,textarea,select{
+  width:100%;
+  padding:15px;
+  border:1px solid #ddd6e3;
+  border-radius:16px;
+  font-size:16px;
+  margin-bottom:10px;
+  background:white;
+}
 
-  margin-bottom:5px;
-
+textarea{
+  min-height:100px;
+  resize:vertical;
 }
 
 .hidden{
-
   display:none;
-
-}
-
-.replyBox{
-
-  background:#faf7fb;
-
-  border-radius:20px;
-
-  padding:16px;
-
-  margin-top:12px;
-
 }
 
 .reply{
-
-  background:#fff;
-
-  border:1px solid #eee5f0;
-
+  background:#f8f5fa;
   border-radius:18px;
-
-  padding:15px;
-
-  margin:10px 0;
-
-}
-
-.replyTitle{
-
-  font-weight:800;
-
-  margin-bottom:8px;
-
-}
-
-.replyText{
-
+  padding:16px;
+  margin-top:10px;
   line-height:1.7;
-
-  white-space:pre-wrap;
-
 }
 
-.row{
+.reply button{
+  margin-top:10px;
+  padding:9px 14px;
+  font-size:14px;
+}
 
+.item{
   display:flex;
-
-  gap:8px;
-
   align-items:center;
-
+  gap:10px;
+  padding:12px 0;
+  border-bottom:1px solid #eee;
 }
 
-.row>*{
+.item:last-child{
+  border-bottom:0;
+}
 
+.item span{
   flex:1;
-
 }
 
-.customer,
-
-.todo,
-
-.event{
-
-  background:#faf8fb;
-
-  padding:15px;
-
-  border-radius:18px;
-
-  margin-bottom:10px;
-
-}
-
-.done{
-
-  opacity:.55;
-
-  text-decoration:line-through;
-
-}
-
-.tag{
-
-  display:inline-block;
-
-  background:#eee4f4;
-
-  color:#704b82;
-
-  border-radius:999px;
-
-  padding:6px 10px;
-
-  font-size:13px;
-
-  margin:3px;
-
+.small{
+  color:#888;
+  font-size:14px;
 }
 
 .back{
-
-  margin-bottom:15px;
-
+  margin-bottom:14px;
+  background:transparent;
+  padding:5px;
+  color:#75518b;
 }
-
-.empty{
-
-  color:#999;
-
-  text-align:center;
-
-  padding:20px;
-
-}
-
 </style>
-
 </head>
 
 <body>
 
 <div class="wrap">
 
+  <div class="hero">
+    <h1>🤖 安妤 AI</h1>
+    <div class="sub">你的超業 AI 教練｜陪你找客戶、回 LINE、做追蹤</div>
+  </div>
+
   <!-- 首頁 -->
+  <div id="home">
 
-  <section id="home">
-
-    <div class="card hero">
-
-      <h1>🤖 安妤 AI</h1>
-
-      <p style="font-size:18px;font-weight:700;">
-
-        嗨，我是安妤 AI 👋
-
-      </p>
-
-      <p>
-
-        我陪你整理客戶、準備 LINE 回覆、安排活動，
-
-        也幫你把每天該做的事情整理好。
-
-      </p>
+    <div class="card">
+      <h2>今天想讓安妤 AI 幫你什麼？</h2>
 
       <div class="grid">
-
-        <button class="menuBtn" onclick="showPage('crm')">
-
-          <span>👥</span>
-
-          客戶 CRM
-
-        </button>
-
-        <button class="menuBtn" onclick="showPage('line')">
-
-          <span>💬</span>
-
-          LINE 回覆
-
-        </button>
-
-        <button class="menuBtn" onclick="showPage('calendar')">
-
-          <span>📅</span>
-
-          預約／活動
-
-        </button>
-
-        <button class="menuBtn" onclick="showPage('todo')">
-
-          <span>📝</span>
-
-          今日待辦
-
-        </button>
-
+        <button onclick="show('crm')">👥 客戶 CRM</button>
+        <button onclick="show('line')">💬 LINE 回覆</button>
+        <button onclick="show('calendar')">📅 預約／活動</button>
+        <button onclick="show('todo')">📝 今日待辦</button>
       </div>
-
     </div>
 
-  </section>
+    <div class="card">
+      <h2>🔥 教練提醒</h2>
+      <p>
+        不急著成交，先把客戶聊懂。<br>
+        每一次聯絡，都留下下一步。
+      </p>
+    </div>
+
+  </div>
+
 
   <!-- CRM -->
+  <div id="crm" class="hidden">
 
-  <section id="crm" class="hidden">
-
-    <button class="btn light back" onclick="showPage('home')">← 回首頁</button>
+    <button class="back" onclick="show('home')">← 回首頁</button>
 
     <div class="card">
-
       <h2>👥 客戶 CRM</h2>
 
-      <input id="customerName" placeholder="客戶姓名">
+      <input id="customerName" placeholder="客戶姓名／稱呼">
+      <input id="customerRole" placeholder="身份，例如：老闆、朋友、同學">
+      <input id="customerNeed" placeholder="目前需求，例如：房貸、資產活化">
+      <textarea id="customerNote" placeholder="備註／客戶狀況"></textarea>
 
-      <input id="customerPhone" placeholder="電話／LINE">
-
-      
-
-      <select id="customerType">
-
-        <option value="">客戶類型</option>
-
-        <option>房產</option>
-
-        <option>財務</option>
-
-        <option>房貸</option>
-
-        <option>紫微</option>
-
-        <option>朋友／同學</option>
-
-        <option>其他</option>
-
-      </select>
-
-      <textarea id="customerNote" placeholder="客戶目前狀況、需求、聊天重點"></textarea>
-
-      <button class="btn primary" onclick="addCustomer()">
-
+      <button class="primary" onclick="addCustomer()">
         ＋ 新增客戶
-
       </button>
-
     </div>
 
     <div class="card">
-
       <h2>我的客戶</h2>
-
       <div id="customerList"></div>
-
     </div>
 
-  </section>
+  </div>
+
 
   <!-- LINE -->
+  <div id="line" class="hidden">
 
-  <section id="line" class="hidden">
-
-    <button class="btn light back" onclick="showPage('home')">← 回首頁</button>
+    <button class="back" onclick="show('home')">← 回首頁</button>
 
     <div class="card">
-
-      <h2>💬 LINE 人性回覆教練</h2>
+      <h2>💬 LINE 人性回覆</h2>
 
       <p class="small">
-
-        不一次塞滿畫面。先選「客戶情境」，再挑適合你的回覆。
-
+        先選情境，安妤 AI 教練再幫你想話。
       </p>
 
-      <select id="scenario" onchange="showReplies()">
-
+      <select id="lineSituation" onchange="generateReplies()">
         <option value="">請選擇客戶情境</option>
-
-        <option value="久未聯絡">很久沒聯絡</option>
-
-        <option value="已讀">客戶已讀沒回</option>
-
-        <option value="有興趣">客戶說有興趣</option>
-
-        <option value="考慮">客戶說再考慮</option>
-
-        <option value="價格">客戶問價格</option>
-
+        <option value="久沒聯絡">很久沒聯絡</option>
+        <option value="已讀不回">客戶已讀不回</option>
+        <option value="考慮">客戶說考慮一下</option>
+        <option value="沒時間">客戶說沒時間</option>
+        <option value="有興趣">客戶有興趣</option>
         <option value="拒絕">客戶婉拒</option>
-
-        <option value="活動">邀請參加活動</option>
-
-        <option value="房產">客戶聊房產</option>
-
       </select>
 
-      <div id="replyArea"></div>
-
+      <div id="replyList"></div>
     </div>
 
-  </section>
+  </div>
 
-  <!-- 行事曆 -->
 
-  <section id="calendar" class="hidden">
+  <!-- 預約 -->
+  <div id="calendar" class="hidden">
 
-    <button class="btn light back" onclick="showPage('home')">← 回首頁</button>
+    <button class="back" onclick="show('home')">← 回首頁</button>
 
     <div class="card">
-
       <h2>📅 預約／活動</h2>
 
-      <input id="eventTitle" placeholder="活動名稱，例如：和總哥聊房產">
+      <input id="eventTitle" placeholder="活動名稱／客戶姓名">
 
       <input id="eventDate" type="date">
 
       <input id="eventTime" type="time">
 
-      <input id="eventDuration" type="number" value="60" placeholder="分鐘">
-
-      <input id="eventLocation" placeholder="地點（可不填）">
-
-      <textarea id="eventNote" placeholder="備註"></textarea>
-
-      <button class="btn primary" onclick="addEvent()">
-
-        ＋ 建立活動
-
+      <button class="primary" onclick="addEvent()">
+        ＋ 新增預約
       </button>
-
-      <p class="small">
-
-        建立後會產生 Google 行事曆連結，點擊即可加入你的 Google 行事曆。
-
-      </p>
-
     </div>
 
     <div class="card">
-
-      <h2>我的活動</h2>
-
+      <h2>我的預約</h2>
       <div id="eventList"></div>
-
     </div>
 
-  </section>
+  </div>
+
 
   <!-- 待辦 -->
+  <div id="todo" class="hidden">
 
-  <section id="todo" class="hidden">
-
-    <button class="btn light back" onclick="showPage('home')">← 回首頁</button>
+    <button class="back" onclick="show('home')">← 回首頁</button>
 
     <div class="card">
-
       <h2>📝 今日待辦</h2>
 
-      <div class="row">
+      <input id="todoInput" placeholder="例如：跟進王姐">
 
-        <input id="todoInput" placeholder="例如：跟進總哥">
-
-        <button class="btn primary" onclick="addTodo()">新增</button>
-
-      </div>
-
+      <button class="primary" onclick="addTodo()">
+        ＋ 新增待辦
+      </button>
     </div>
 
     <div class="card">
-
-      <h2>今天要做什麼？</h2>
-
       <div id="todoList"></div>
-
     </div>
 
-  </section>
+  </div>
 
 </div>
 
+
 <script>
 
-/* =========================
+let customers =
+JSON.parse(localStorage.getItem("customers") || "[]");
 
-   基本頁面切換
+let todos =
+JSON.parse(localStorage.getItem("todos") || "[]");
 
-========================= */
+let events =
+JSON.parse(localStorage.getItem("events") || "[]");
 
-function showPage(page){
 
-  document.querySelectorAll("section[id]").forEach(section=>{
+function show(page){
 
-    section.classList.add("hidden");
-
+  ["home","crm","line","calendar","todo"]
+  .forEach(id=>{
+    document.getElementById(id).classList.add("hidden");
   });
 
   document.getElementById(page).classList.remove("hidden");
 
   if(page==="crm") renderCustomers();
-
   if(page==="todo") renderTodos();
-
   if(page==="calendar") renderEvents();
-
 }
 
-/* =========================
 
-   客戶 CRM
-
-========================= */
-
-let customers =
-
-JSON.parse(localStorage.getItem("anyu_customers") || "[]");
-
-function saveCustomers(){
-
-  localStorage.setItem(
-
-    "anyu_customers",
-
-    JSON.stringify(customers)
-
-  );
-
-}
+/* CRM */
 
 function addCustomer(){
 
-  const name =
-
-    document.getElementById("customerName").value.trim();
+  const name=document.getElementById("customerName").value.trim();
 
   if(!name){
-
-    alert("請先輸入客戶姓名");
-
+    alert("請先輸入客戶姓名／稱呼");
     return;
-
   }
 
-  const customer={
-
-    id:Date.now(),
-
+  customers.push({
     name:name,
-
-    phone:document.getElementById("customerPhone").value,
-
-    type:document.getElementById("customerType").value,
-
+    role:document.getElementById("customerRole").value,
+    need:document.getElementById("customerNeed").value,
     note:document.getElementById("customerNote").value
+  });
 
-  };
-
-  customers.unshift(customer);
-
-  saveCustomers();
+  localStorage.setItem("customers",JSON.stringify(customers));
 
   document.getElementById("customerName").value="";
-
-  document.getElementById("customerPhone").value="";
-
-  document.getElementById("customerType").value="";
-
+  document.getElementById("customerRole").value="";
+  document.getElementById("customerNeed").value="";
   document.getElementById("customerNote").value="";
 
   renderCustomers();
 
+  alert("客戶已新增！");
 }
 
-function deleteCustomer(id){
-
-  if(!confirm("確定要刪除這位客戶嗎？")) return;
-
-  customers =
-
-    customers.filter(c=>c.id!==id);
-
-  saveCustomers();
-
-  renderCustomers();
-
-}
 
 function renderCustomers(){
 
   const box=document.getElementById("customerList");
 
   if(customers.length===0){
-
-    box.innerHTML='<div class="empty">目前還沒有客戶</div>';
-
+    box.innerHTML='<p class="small">目前還沒有客戶。</p>';
     return;
-
   }
 
-  box.innerHTML=customers.map(c=>`
+  box.innerHTML=customers.map((c,i)=>`
 
-    <div class="customer">
+    <div class="item">
+      <span>
+        <b>${c.name}</b><br>
+        <small>${c.role || ""} ${c.need || ""}</small>
+      </span>
 
-      <h3>${escapeHtml(c.name)}</h3>
-
-      ${c.type ? `<span class="tag">${escapeHtml(c.type)}</span>` : ""}
-
-      ${c.phone ? `<p>📱 ${escapeHtml(c.phone)}</p>` : ""}
-
-      ${c.note ? `<p>${escapeHtml(c.note)}</p>` : ""}
-
-      <button class="btn red"
-
-        onclick="deleteCustomer(${c.id})">
-
-        刪除
-
-      </button>
-
+      <button onclick="deleteCustomer(${i})">刪除</button>
     </div>
 
   `).join("");
-
 }
 
-/* =========================
 
-   LINE 人性話術
+function deleteCustomer(i){
 
-========================= */
+  if(confirm("確定要刪除這位客戶嗎？")){
 
-const replies={
+    customers.splice(i,1);
 
-"久未聯絡":[
+    localStorage.setItem(
+      "customers",
+      JSON.stringify(customers)
+    );
 
-{
-
-title:"自然關心版",
-
-text:"嗨～最近突然想到你，想說來關心一下 😊\n最近工作、生活都還順利嗎？"
-
-},
-
-{
-
-title:"朋友版",
-
-text:"欸～我們真的有一陣子沒聊了 😂\n最近過得怎麼樣？有沒有什麼近況可以跟我分享一下？"
-
-},
-
-{
-
-title:"教練版",
-
-text:"嗨～前陣子聊到的事情，我最近剛好又想到你。\n不知道你現在的想法有沒有什麼變化？"
-
-}
-
-],
-
-"已讀":[
-
-{
-
-title:"不給壓力版",
-
-text:"沒事～你有空再回我就好 😊\n我只是想確認一下，你最近還有在關注這件事情嗎？"
-
-},
-
-{
-
-title:"人性版",
-
-text:"我猜你可能最近比較忙 😂\n不用急著回，我只是想知道你現在最在意的是哪一塊。"
-
-},
-
-{
-
-title:"教練版",
-
-text:"我不急著要你做決定。\n如果方便的話，你跟我說目前最大的顧慮，我比較知道怎麼陪你看。"
-
-}
-
-],
-
-"有興趣":[
-
-{
-
-title:"延伸版",
-
-text:"很好啊 😊\n那我先不急著講太多，你目前最想先了解哪一塊？"
-
-},
-
-{
-
-title:"聊天版",
-
-text:"可以～那我們就從你最有興趣的地方開始。\n你現在比較在意「資金」、「房子」還是「未來規劃」？"
-
-},
-
-{
-
-title:"教練版",
-
-text:"有興趣就好，我們先把問題釐清，不一定要馬上做決定。\n你現在最想解決的問題是什麼？"
-
-}
-
-],
-
-"考慮":[
-
-{
-
-title:"溫暖版",
-
-text:"可以啊，你慢慢想沒關係 😊\n我比較想知道的是，你現在還卡在哪個地方？"
-
-},
-
-{
-
-title:"不逼單版",
-
-text:"沒問題，我也不希望你是在有壓力的情況下決定。\n如果有哪個地方你不確定，我們可以一起拆開來看。"
-
-},
-
-{
-
-title:"教練版",
-
-text:"我尊重你的節奏。\n你可以先告訴我，你目前考慮的是風險、資金，還是還沒看懂整個方式？"
-
-}
-
-],
-
-"價格":[
-
-{
-
-title:"自然版",
-
-text:"可以，我懂你會先想知道費用。\n不過我想先了解你的狀況，因為不同需求適合的方式其實不太一樣。"
-
-},
-
-{
-
-title:"專業版",
-
-text:"價格我可以跟你說，但我比較不希望只談一個數字。\n先把你的需求跟條件釐清，才知道這個方式適不適合你。"
-
-},
-
-{
-
-title:"教練版",
-
-text:"我可以直接跟你說價格。\n但在那之前，我想先確認：如果價格符合你的預算，你真正想解決的問題是什麼？"
-
-}
-
-],
-
-"拒絕":[
-
-{
-
-title:"尊重版",
-
-text:"沒問題，我完全尊重你 😊\n以後如果你只是想聊聊或遇到房產上的問題，也都可以找我。"
-
-},
-
-{
-
-title:"朋友版",
-
-text:"OK～不用有壓力啦 😂\n我們本來就是朋友，有需要的時候再聊就好。"
-
-},
-
-{
-
-title:"教練版",
-
-text:"我懂，每個人都有自己的時間點。\n那我先不打擾你，之後如果你的狀況有變，我再陪你一起看。"
-
-}
-
-],
-
-"活動":[
-
-{
-
-title:"溫暖邀約",
-
-text:"我最近有一場活動，覺得內容可能會對你有幫助。\n不用先決定任何事情，就當作來聽聽、認識一些資訊 😊"
-
-},
-
-{
-
-title:"朋友邀約",
-
-text:"欸～我最近剛好有一場活動，我第一個想到你 😂\n如果你時間可以，我想邀請你一起來。"
-
-},
-
-{
-
-title:"高價值邀約",
-
-text:"這場我不是單純想邀你來聽課，而是覺得裡面的資訊，可能剛好可以幫你重新整理目前的資產規劃。\n你有空的話，我留一個位置給你。"
-
-}
-
-],
-
-"房產":[
-
-{
-
-title:"聊天版",
-
-text:"你現在這間房子是自己住，還是比較偏投資用途？\n我想先了解一下你的狀況。"
-
-},
-
-{
-
-title:"教練版",
-
-text:"很多人以為房產只有買或賣，其實中間還有很多不同的運用方式。\n你現在最想解決的是現金流、房貸，還是資產配置？"
-
-},
-
-{
-
-title:"深入版",
-
-text:"我不會一開始就跟你講要不要買或賣。\n我比較想先知道：這間房子現在對你的生活，是資產還是壓力？"
-
-}
-
-]
-
-};
-
-function showReplies(){
-
-  const scenario=
-
-    document.getElementById("scenario").value;
-
-  const area=
-
-    document.getElementById("replyArea");
-
-  if(!scenario){
-
-    area.innerHTML="";
-
-    return;
-
+    renderCustomers();
   }
-
-  const list=replies[scenario] || [];
-
-  area.innerHTML=`
-
-    <div class="replyBox">
-
-      <div class="small">
-
-        ${list.length} 種回覆方式
-
-      </div>
-
-      ${list.map((r,i)=>`
-
-        <div class="reply">
-
-          <div class="replyTitle">
-
-            ${r.title}
-
-          </div>
-
-          <div class="replyText" id="reply-${i}">
-
-            ${escapeHtml(r.text)}
-
-          </div>
-
-          <button
-
-            class="btn light"
-
-            onclick="copyReply(${i})">
-
-            📋 複製
-
-          </button>
-
-        </div>
-
-      `).join("")}
-
-    </div>
-
-  `;
-
-  window.currentReplies=list;
-
 }
 
-function copyReply(index){
 
-  const text=window.currentReplies[index].text;
+/* LINE */
 
-  navigator.clipboard.writeText(text)
+function generateReplies(){
 
-    .then(()=>{
+  const situation=
+  document.getElementById("lineSituation").value;
 
-      alert("已複製，可以直接貼到 LINE 👍");
+  const replies={
 
-    })
+    "久沒聯絡":[
+      "嗨～突然想到你，最近過得還好嗎？😊",
+      "好久沒跟你聊了，最近工作跟生活還順嗎？",
+      "前陣子想到我們之前聊的事情，想說來關心你一下～最近有沒有什麼新的變化？"
+    ],
 
-    .catch(()=>{
+    "已讀不回":[
+      "我猜你最近應該比較忙，我先不打擾你～有空再跟我說一聲就好 😊",
+      "沒關係，你忙你的，有需要我的時候再找我，我都在。",
+      "我怕前面訊息被你忙到漏掉，所以再輕輕提醒一下～不用急著回。"
+    ],
 
-      prompt("請複製以下內容：",text);
+    "考慮":[
+      "可以啊，這種事情本來就不用急著決定。你現在主要是在考慮哪一個部分？",
+      "沒問題，你先想清楚比較重要。如果你願意，我可以陪你把疑慮整理一下。",
+      "我懂，畢竟跟錢有關一定要想清楚。你最在意的是風險、資金，還是未來的安排？"
+    ],
 
-    });
+    "沒時間":[
+      "我懂，大家現在真的都很忙 😂 那我不佔你時間，我只問你一個問題就好。",
+      "沒關係，我知道你忙。那我們不用約很久，找一個你方便的時間聊一下就好。",
+      "可以，我配合你的時間。你比較方便平日晚上，還是假日？"
+    ],
 
-}
+    "有興趣":[
+      "很好～那我先不急著跟你講方案，我想先了解你的狀況，這樣才不會亂推薦。",
+      "可以，那我想先問你一件事：你現在最想解決的是哪一個問題？",
+      "有興趣就好 😊 我們先聊你的需求，我再幫你看哪一種方式比較適合。"
+    ],
 
-/* =========================
-
-   Google 行事曆
-
-========================= */
-
-let events =
-
-JSON.parse(localStorage.getItem("anyu_events") || "[]");
-
-function saveEvents(){
-
-  localStorage.setItem(
-
-    "anyu_events",
-
-    JSON.stringify(events)
-
-  );
-
-}
-
-function addEvent(){
-
-  const title=
-
-    document.getElementById("eventTitle").value.trim();
-
-  const date=
-
-    document.getElementById("eventDate").value;
-
-  const time=
-
-    document.getElementById("eventTime").value;
-
-  if(!title || !date || !time){
-
-    alert("請至少填寫活動名稱、日期、時間");
-
-    return;
-
-  }
-
-  const event={
-
-    id:Date.now(),
-
-    title:title,
-
-    date:date,
-
-    time:time,
-
-    duration:parseInt(
-
-      document.getElementById("eventDuration").value
-
-    ) || 60,
-
-    location:document.getElementById("eventLocation").value,
-
-    note:document.getElementById("eventNote").value
+    "拒絕":[
+      "沒問題，我尊重你 😊 只是我想了解一下，是目前沒有需求，還是這件事情你比較擔心風險？",
+      "了解，我不勉強你。以後如果你有任何房產或財務上的問題，都可以問我。",
+      "OK，我懂。那我就先不打擾你，之後有需要再找我就好。"
+    ]
 
   };
 
-  events.unshift(event);
-
-  saveEvents();
-
-  document.getElementById("eventTitle").value="";
-
-  document.getElementById("eventDate").value="";
-
-  document.getElementById("eventTime").value="";
-
-  document.getElementById("eventLocation").value="";
-
-  document.getElementById("eventNote").value="";
-
-  renderEvents();
-
-}
-
-function googleCalendarURL(event){
-
-  const start =
-
-    event.date.replace(/-/g,"") +
-
-    "T" +
-
-    event.time.replace(":","") +
-
-    "00";
-
-  const startDate=new Date(
-
-    event.date+"T"+event.time
-
-  );
-
-  const endDate=
-
-    new Date(
-
-      startDate.getTime() +
-
-      event.duration*60000
-
-    );
-
-  const end =
-
-    endDate.getFullYear() +
-
-    String(endDate.getMonth()+1).padStart(2,"0") +
-
-    String(endDate.getDate()).padStart(2,"0") +
-
-    "T" +
-
-    String(endDate.getHours()).padStart(2,"0") +
-
-    String(endDate.getMinutes()).padStart(2,"0") +
-
-    "00";
-
-  return "https://calendar.google.com/calendar/render?action=TEMPLATE"
-
-    +"&text="+encodeURIComponent(event.title)
-
-    +"&dates="+start+"/"+end
-
-    +"&details="+encodeURIComponent(event.note || "")
-
-    +"&location="+encodeURIComponent(event.location || "");
-
-}
-
-function deleteEvent(id){
-
-  events=
-
-    events.filter(e=>e.id!==id);
-
-  saveEvents();
-
-  renderEvents();
-
-}
-
-function renderEvents(){
-
-  const box=document.getElementById("eventList");
-
-  if(events.length===0){
-
-    box.innerHTML='<div class="empty">目前還沒有活動</div>';
-
-    return;
-
-  }
-
-  box.innerHTML=events.map(e=>`
-
-    <div class="event">
-
-      <h3>📅 ${escapeHtml(e.title)}</h3>
-
-      <p>
-
-        ${e.date} ${e.time}
-
-        · ${e.duration} 分鐘
-
-      </p>
-
-      ${e.location
-
-        ? `<p>📍 ${escapeHtml(e.location)}</p>`
-
-        : ""}
-
-      <a
-
-        href="${googleCalendarURL(e)}"
-
-        target="_blank"
-
-        class="btn primary"
-
-        style="display:inline-block;text-decoration:none">
-
-        加入 Google 行事曆
-
-      </a>
-
-      <button
-
-        class="btn red"
-
-        onclick="deleteEvent(${e.id})">
-
-        刪除
-
+  const list=replies[situation] || [];
+
+  document.getElementById("replyList").innerHTML=
+  list.map((text,i)=>`
+
+    <div class="reply">
+      ${text}
+      <br>
+      <button onclick="copyText(${JSON.stringify(text)})">
+        📋 複製
       </button>
-
     </div>
 
   `).join("");
-
 }
 
-/* =========================
 
-   今日待辦
+function copyText(text){
 
-========================= */
+  navigator.clipboard.writeText(text);
 
-let todos =
-
-JSON.parse(localStorage.getItem("anyu_todos") || "[]");
-
-function saveTodos(){
-
-  localStorage.setItem(
-
-    "anyu_todos",
-
-    JSON.stringify(todos)
-
-  );
-
+  alert("已複製，可以貼到 LINE 了！");
 }
+
+
+/* 待辦 */
 
 function addTodo(){
 
-  const input=
-
-    document.getElementById("todoInput");
-
+  const input=document.getElementById("todoInput");
   const text=input.value.trim();
 
   if(!text) return;
 
-  todos.unshift({
-
-    id:Date.now(),
-
+  todos.push({
     text:text,
-
     done:false
-
   });
 
-  saveTodos();
+  localStorage.setItem(
+    "todos",
+    JSON.stringify(todos)
+  );
 
   input.value="";
 
   renderTodos();
-
 }
 
-function toggleTodo(id){
-
-  const todo=
-
-    todos.find(t=>t.id===id);
-
-  if(todo) todo.done=!todo.done;
-
-  saveTodos();
-
-  renderTodos();
-
-}
-
-function deleteTodo(id){
-
-  todos=
-
-    todos.filter(t=>t.id!==id);
-
-  saveTodos();
-
-  renderTodos();
-
-}
 
 function renderTodos(){
 
   const box=document.getElementById("todoList");
 
   if(todos.length===0){
-
-    box.innerHTML='<div class="empty">今天還沒有待辦事項 🎉</div>';
-
+    box.innerHTML='<p class="small">今天還沒有待辦事項。</p>';
     return;
-
   }
 
-  box.innerHTML=todos.map(t=>`
+  box.innerHTML=todos.map((t,i)=>`
 
-    <div class="todo ${t.done ? "done":""}">
+    <div class="item">
 
-      <div style="margin-bottom:10px">
+      <input
+        type="checkbox"
+        style="width:22px;margin:0"
+        ${t.done ? "checked" : ""}
+        onchange="toggleTodo(${i})"
+      >
 
-        ${escapeHtml(t.text)}
+      <span style="${t.done ? 'text-decoration:line-through;color:#999' : ''}">
+        ${t.text}
+      </span>
 
-      </div>
-
-      <button
-
-        class="btn green"
-
-        onclick="toggleTodo(${t.id})">
-
-        ${t.done ? "↩️ 取消完成" : "✅ 完成"}
-
-      </button>
-
-      <button
-
-        class="btn red"
-
-        onclick="deleteTodo(${t.id})">
-
-        刪除
-
-      </button>
+      <button onclick="deleteTodo(${i})">刪除</button>
 
     </div>
 
   `).join("");
-
 }
 
-/* =========================
 
-   防止文字破壞 HTML
+function toggleTodo(i){
 
-========================= */
+  todos[i].done=!todos[i].done;
 
-function escapeHtml(text){
+  localStorage.setItem(
+    "todos",
+    JSON.stringify(todos)
+  );
 
-  return String(text)
+  renderTodos();
+}
 
-    .replace(/&/g,"&amp;")
 
-    .replace(/</g,"&lt;")
+function deleteTodo(i){
 
-    .replace(/>/g,"&gt;")
+  todos.splice(i,1);
 
-    .replace(/"/g,"&quot;")
+  localStorage.setItem(
+    "todos",
+    JSON.stringify(todos)
+  );
 
-    .replace(/'/g,"&#039;");
+  renderTodos();
+}
 
+
+/* 預約 */
+
+function addEvent(){
+
+  const title=document.getElementById("eventTitle").value.trim();
+  const date=document.getElementById("eventDate").value;
+  const time=document.getElementById("eventTime").value;
+
+  if(!title || !date || !time){
+    alert("請把活動名稱、日期、時間填完整");
+    return;
+  }
+
+  events.push({
+    title:title,
+    date:date,
+    time:time
+  });
+
+  localStorage.setItem(
+    "events",
+    JSON.stringify(events)
+  );
+
+  document.getElementById("eventTitle").value="";
+
+  renderEvents();
+
+  alert("預約已建立！");
+}
+
+
+function renderEvents(){
+
+  const box=document.getElementById("eventList");
+
+  if(events.length===0){
+    box.innerHTML='<p class="small">目前沒有預約。</p>';
+    return;
+  }
+
+  box.innerHTML=events.map((e,i)=>`
+
+    <div class="item">
+
+      <span>
+        <b>${e.title}</b><br>
+        <small>${e.date} ${e.time}</small>
+      </span>
+
+      <button onclick="deleteEvent(${i})">刪除</button>
+
+    </div>
+
+  `).join("");
+}
+
+
+function deleteEvent(i){
+
+  events.splice(i,1);
+
+  localStorage.setItem(
+    "events",
+    JSON.stringify(events)
+  );
+
+  renderEvents();
 }
 
 </script>
 
 </body>
-
 </html>
