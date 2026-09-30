@@ -4,23 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>安妤 AI｜財富與房產活化助理</title>
-
 <style>
 *{box-sizing:border-box}
-
 body{
   margin:0;
   background:#f6f1f7;
   color:#292331;
   font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC",sans-serif;
 }
-
 .wrap{
   max-width:680px;
   margin:auto;
   padding:20px 16px 50px;
 }
-
 .card{
   background:#fff;
   border-radius:28px;
@@ -28,32 +24,18 @@ body{
   margin-bottom:24px;
   box-shadow:0 8px 30px rgba(70,50,90,.08);
 }
-
-h1{
-  font-size:32px;
-  margin:0 0 28px;
-}
-
-h2{
-  font-size:27px;
-  margin:0 0 24px;
-}
-
-.hero{
-  padding:32px 28px;
-}
-
+h1{font-size:32px;margin:0 0 28px}
+h2{font-size:27px;margin:0 0 24px}
+.hero{padding:32px 28px}
 .avatar{
   font-size:38px;
   margin-bottom:8px;
 }
-
 .chat{
   background:#f8f5f9;
   border-radius:24px;
   padding:22px;
 }
-
 .message{
   background:#fff;
   border-radius:22px;
@@ -62,17 +44,12 @@ h2{
   font-size:20px;
   line-height:1.7;
 }
-
-.message.me{
-  background:#d9f9c1;
-}
-
+.message.me{background:#d9f9c1}
 .row{
   display:flex;
   gap:12px;
   margin-top:16px;
 }
-
 input{
   flex:1;
   min-width:0;
@@ -82,7 +59,6 @@ input{
   font-size:17px;
   outline:none;
 }
-
 button{
   border:0;
   border-radius:18px;
@@ -91,25 +67,21 @@ button{
   font-weight:700;
   cursor:pointer;
 }
-
 .send{
   background:#76508b;
   color:white;
 }
-
 .small{
   color:#837887;
   font-size:15px;
   line-height:1.7;
   margin-top:20px;
 }
-
 .tools{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:16px;
 }
-
 .tool{
   background:#faf7fb;
   color:#087bea;
@@ -117,11 +89,9 @@ button{
   font-size:20px;
   border-radius:22px;
 }
-
 .tool:active{
   transform:scale(.97);
 }
-
 .panel{
   display:none;
   margin-top:20px;
@@ -129,42 +99,76 @@ button{
   border-radius:22px;
   padding:22px;
 }
-
-.panel.active{
-  display:block;
-}
-
+.panel.active{display:block}
 .panel input{
   width:100%;
   margin-bottom:12px;
 }
-
 .save{
   background:#087bea;
   color:#fff;
   width:100%;
 }
-
 .close{
   background:#eee7f0;
   color:#555;
   margin-top:10px;
   width:100%;
 }
-
+/* LINE 話術 */
+.category{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding-bottom:12px;
+  margin-bottom:12px;
+}
+.category button{
+  white-space:nowrap;
+  background:#eee7f3;
+  color:#76508b;
+  padding:10px 15px;
+  font-size:14px;
+}
+.category button.active{
+  background:#76508b;
+  color:#fff;
+}
+.script{
+  background:#fff;
+  border-radius:20px;
+  padding:18px;
+  margin-top:12px;
+  border:1px solid #eee5f0;
+}
+.script-title{
+  font-size:18px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+.script-text{
+  font-size:16px;
+  line-height:1.8;
+  color:#4d4652;
+  white-space:pre-line;
+}
+.copy{
+  background:#087bea;
+  color:#fff;
+  margin-top:12px;
+  width:100%;
+}
 .item{
   background:white;
   padding:15px;
   border-radius:16px;
   margin-top:10px;
 }
-
 .empty{
   color:#888;
   text-align:center;
   padding:15px;
 }
-
 @media(max-width:430px){
   .card{padding:22px}
   h1{font-size:29px}
@@ -174,490 +178,460 @@ button{
 }
 </style>
 </head>
-
 <body>
-
 <div class="wrap">
-
-  <!-- 安妤 AI -->
-  <section class="card hero">
-
-    <div class="avatar">🤖</div>
-    <h1>問安妤 AI</h1>
-
-    <div class="chat">
-
-      <div class="message">
-        嗨，我是安妤 AI 👋<br>
-        你可以直接把客戶狀況、房產問題或想傳給客戶的話丟給我。
-      </div>
-
-      <div class="message me" id="userMessage">
-        我想處理：業務陪跑
-      </div>
-
-      <div class="message">
-        收到。下一步我可以幫你整理成：<br>
-        ① 客戶分析<br>
-        ② LINE 邀約<br>
-        ③ 跟進話術<br>
-        ④ 下一步行動
-      </div>
-
-    </div>
-
-    <div class="row">
-      <input id="input" placeholder="例如：幫我跟進一位很久沒聯絡的客戶">
-      <button class="send" onclick="sendMessage()">送出</button>
-    </div>
-
-    <p class="small">
-      目前先完成 LIFE 與工作台介面；下一階段可以接真正的 AI、CRM 與客戶資料庫。
-    </p>
-
-  </section>
-
-
-  <!-- 我的工作台 -->
-  <section class="card">
-
-    <h2>我的工作台</h2>
-
-    <div class="tools">
-
-      <button class="tool" onclick="openPanel('crm')">
-        👥 客戶 CRM
-      </button>
-
-      <button class="tool" onclick="openPanel('line')">
-        💬 LINE 回覆
-      </button>
-
-      <button class="tool" onclick="openPanel('calendar')">
-        📅 預約／活動
-      </button>
-
-      <button class="tool" onclick="openPanel('todo')">
-        📝 今日待辦
-      </button>
-
-    </div>
-
-
-    <!-- CRM -->
-    <div class="panel" id="crm">
-
-      <h2>👥 客戶 CRM</h2>
-
-      <input id="crmName" placeholder="客戶姓名">
-      <input id="crmNote" placeholder="客戶目前狀況">
-
-      <button class="save" onclick="saveCRM()">
-        ＋ 儲存客戶
-      </button>
-
-      <div id="crmList"></div>
-
-      <button class="close" onclick="closePanel('crm')">
-        關閉
-      </button>
-
-    </div>
-
-
-    <!-- LINE -->
-    <div class="panel" id="line">
-
-      <h2>💬 LINE 回覆</h2>
-
-      <div class="item">
-        <b>① 久未聯絡</b>
-        <p>
-          最近突然想到你，想說來關心一下近況～
-          最近工作、生活都還順利嗎？
-        </p>
-        <button onclick="copyText(this.parentElement.innerText)">
-          複製話術
-        </button>
-      </div>
-
-      <div class="item">
-        <b>② 活動邀約</b>
-        <p>
-          我最近有一場很適合你了解的分享，
-          不一定要做任何決定，單純來聽聽看，
-          我覺得你會有收穫。
-        </p>
-        <button onclick="copyText(this.parentElement.innerText)">
-          複製話術
-        </button>
-      </div>
-
-      <button class="close" onclick="closePanel('line')">
-        關閉
-      </button>
-
-    </div>
-
-
-    <!-- 預約 -->
-    <div class="panel" id="calendar">
-
-      <h2>📅 預約／活動</h2>
-
-      <input id="eventName" placeholder="活動或客戶名稱">
-      <input id="eventDate" type="date">
-
-      <button class="save" onclick="saveEvent()">
-        ＋ 新增預約
-      </button>
-
-      <div id="eventList"></div>
-
-      <button class="close" onclick="closePanel('calendar')">
-        關閉
-      </button>
-
-    </div>
-
-
-    <!-- 待辦 -->
-    <div class="panel" id="todo">
-
-      <h2>📝 今日待辦</h2>
-
-      <input id="todoInput" placeholder="例如：跟進總哥">
-
-      <button class="save" onclick="saveTodo()">
-        ＋ 新增待辦
-      </button>
-
-      <div id="todoList"></div>
-
-      <button class="close" onclick="closePanel('todo')">
-        關閉
-      </button>
-
-    </div>
-
-  </section>
-
-
-  <!-- 房產活化 -->
-  <section class="card">
-
-    <h2>🏠 房產活化</h2>
-
-    <p>
-      不是教你炒房，也不是叫你賣房，
-      而是一起看看房子裡原本卡住的價值，
-      能不能變成更多選擇。
-    </p>
-
-    <button class="send" onclick="quick('房產活化')">
-      🏠 我想了解房產活化
-    </button>
-
-  </section>
-
-
-  <!-- 紫微財富 -->
-  <section class="card">
-
-    <h2>⭐ 紫微財富</h2>
-
-    <p>
-      從你的個人特質、財富模式與人生節奏，
-      找到更適合自己的方向。
-    </p>
-
-    <button class="send" onclick="quick('紫微財富')">
-      ⭐ 我想了解紫微財富
-    </button>
-
-  </section>
-
+<!-- 安妤 AI -->
+<section class="card hero">
+<div class="avatar">🤖</div>
+<h1>問安妤 AI</h1>
+<div class="chat">
+<div class="message">
+嗨，我是安妤 AI 👋<br>
+你可以直接把客戶狀況、房產問題或想傳給客戶的話丟給我。
 </div>
-
-
+<div class="message me" id="userMessage">
+我想處理：業務陪跑
+</div>
+<div class="message">
+收到。下一步我可以幫你整理成：<br>
+① 客戶分析<br>
+② LINE 邀約<br>
+③ 跟進話術<br>
+④ 下一步行動
+</div>
+</div>
+<div class="row">
+<input id="input" placeholder="例如：幫我跟進一位很久沒聯絡的客戶">
+<button class="send" onclick="sendMessage()">送出</button>
+</div>
+<p class="small">
+目前先完成 LIFE 與工作台介面；真正的 AI、CRM 與客戶資料庫可以再接上。
+</p>
+</section>
+<!-- 我的工作台 -->
+<section class="card">
+<h2>我的工作台</h2>
+<div class="tools">
+<button class="tool" onclick="openPanel('crm')">
+👥 客戶 CRM
+</button>
+<button class="tool" onclick="openPanel('line')">
+💬 LINE 回覆
+</button>
+<button class="tool" onclick="openPanel('calendar')">
+📅 預約／活動
+</button>
+<button class="tool" onclick="openPanel('todo')">
+📝 今日待辦
+</button>
+</div>
+<!-- CRM -->
+<div class="panel" id="crm">
+<h2>👥 客戶 CRM</h2>
+<input id="crmName" placeholder="客戶姓名">
+<input id="crmNote" placeholder="客戶目前狀況">
+<button class="save" onclick="saveCRM()">
+＋ 儲存客戶
+</button>
+<div id="crmList"></div>
+<button class="close" onclick="closePanel('crm')">
+關閉
+</button>
+</div>
+<!-- LINE 回覆 -->
+<div class="panel" id="line">
+<h2>💬 LINE 話術庫</h2>
+<p class="small">
+先選情境，再挑適合你的版本。之後可以繼續增加更多話術。
+</p>
+<div class="category">
+<button class="active" onclick="showScripts('all',this)">全部</button>
+<button onclick="showScripts('follow',this)">
+久未聯絡
+</button>
+<button onclick="showScripts('invite',this)">
+活動邀約
+</button>
+<button onclick="showScripts('property',this)">
+房產活化
+</button>
+<button onclick="showScripts('ziwei',this)">
+紫微財富
+</button>
+<button onclick="showScripts('followup',this)">
+客戶追蹤
+</button>
+<button onclick="showScripts('noReply',this)">
+已讀不回
+</button>
+<button onclick="showScripts('meeting',this)">
+約見面
+</button>
+<button onclick="showScripts('year',this)">
+年會邀約
+</button>
+<button onclick="showScripts('referral',this)">
+轉介紹
+</button>
+</div>
+<div id="scriptList"></div>
+<button class="close" onclick="closePanel('line')">
+關閉
+</button>
+</div>
+<!-- 預約 -->
+<div class="panel" id="calendar">
+<h2>📅 預約／活動</h2>
+<input id="eventName" placeholder="活動或客戶名稱">
+<input id="eventDate" type="date">
+<button class="save" onclick="saveEvent()">
+＋ 新增預約
+</button>
+<div id="eventList"></div>
+<button class="close" onclick="closePanel('calendar')">
+關閉
+</button>
+</div>
+<!-- 待辦 -->
+<div class="panel" id="todo">
+<h2>📝 今日待辦</h2>
+<input id="todoInput" placeholder="例如：跟進總哥">
+<button class="save" onclick="saveTodo()">
+＋ 新增待辦
+</button>
+<div id="todoList"></div>
+<button class="close" onclick="closePanel('todo')">
+關閉
+</button>
+</div>
+</section>
+<!-- 房產活化 -->
+<section class="card">
+<h2>🏠 房產活化</h2>
+<p>
+不是教你炒房，也不是叫你賣房，
+而是一起看看房子裡原本卡住的價值，
+能不能變成更多選擇。
+</p>
+<button class="send" onclick="quick('房產活化')">
+🏠 我想了解房產活化
+</button>
+</section>
+<!-- 紫微財富 -->
+<section class="card">
+<h2>⭐ 紫微財富</h2>
+<p>
+從你的個人特質、財富模式與人生節奏，
+找到更適合自己的方向。
+</p>
+<button class="send" onclick="quick('紫微財富')">
+⭐ 我想了解紫微財富
+</button>
+</section>
+</div>
 <script>
-
+/* =========================
+   LINE 話術資料庫
+========================= */
+const scripts = [
+/* 久未聯絡 */
+{
+category:"follow",
+title:"久未聯絡｜自然關心",
+text:`最近突然想到你，想說來關心一下～
+不知道你最近工作、生活都還順利嗎？
+有空再聊聊 😊`
+},
+{
+category:"follow",
+title:"久未聯絡｜朋友感",
+text:`欸～我們真的有一陣子沒聯絡了 😂
+最近突然想到你，
+想問問你最近過得怎麼樣？`
+},
+{
+category:"follow",
+title:"久未聯絡｜帶一點目的",
+text:`最近在整理一些朋友的資產狀況，
+剛好想到你。
+不知道你最近在房子、貸款或財務上，
+有沒有什麼想了解的？`
+},
+/* 活動邀約 */
+{
+category:"invite",
+title:"活動邀約｜輕鬆版",
+text:`我最近有一場分享，
+我覺得你可能會有興趣。
+不用急著做任何決定，
+單純來聽聽、了解一下就好。
+有空我留一個位置給你？`
+},
+{
+category:"invite",
+title:"活動邀約｜朋友版",
+text:`最近剛好有一場活動，
+我第一個想到你。
+不是要你來買什麼，
+而是有些觀念我覺得你聽完會比較有方向。
+你有空一起來嗎？`
+},
+{
+category:"invite",
+title:"活動邀約｜高價值版",
+text:`這場我自己也很期待，
+因為會談到很多一般人平常比較少接觸到的資產觀念。
+我覺得比起我在 LINE 跟你講一堆，
+你直接來現場聽一次會更清楚。
+我幫你留位置。`
+},
+/* 房產活化 */
+{
+category:"property",
+title:"房產活化｜不推銷",
+text:`其實房產活化不是叫你賣房子，
+也不是叫你去炒房。
+比較像是把你現在手上的房子、
+貸款、現金流重新整理一次，
+看看有沒有其他選擇。`
+},
+{
+category:"property",
+title:"房產活化｜房貸壓力",
+text:`如果現在每個月房貸壓力有點大，
+其實不一定只有「繼續繳」或「把房子賣掉」兩條路。
+可以先把目前的資產狀況攤開來看，
+再決定下一步。`
+},
+{
+category:"property",
+title:"房產活化｜引導對談",
+text:`我比較想先了解你的狀況，
+因為每個人的房子、貸款跟需求都不一樣。
+你如果方便，
+我們找個時間聊 20 分鐘，
+我先幫你把現況整理出來。`
+},
+/* 紫微 */
+{
+category:"ziwei",
+title:"紫微財富｜輕鬆版",
+text:`最近我在做一個很有趣的整合，
+把紫微斗數跟財富方向放在一起看。
+不是算你會不會中樂透 😂
+而是看看你的個性跟財富模式，
+到底適合怎麼走。`
+},
+{
+category:"ziwei",
+title:"紫微財富｜朋友版",
+text:`我最近在幫一些朋友看紫微的財富方向，
+有些人看完才發現，
+原來自己不是不會賺，
+而是用錯方法。
+如果你有興趣，我可以幫你看看。`
+},
+{
+category:"ziwei",
+title:"紫微財富｜邀約版",
+text:`如果你最近剛好也在想：
+「我到底適合什麼樣的賺錢方式？」
+可以找我聊聊。
+我會從你的命盤＋目前的人生狀況一起看，
+比較有意思。`
+},
+/* 客戶追蹤 */
+{
+category:"followup",
+title:"客戶追蹤｜溫和",
+text:`上次跟你聊完之後，
+我有再想一下你的狀況。
+不知道你這幾天有沒有再想想看？
+如果有新的問題，也可以直接丟給我。`
+},
+{
+category:"followup",
+title:"客戶追蹤｜不給壓力",
+text:`不用急著做決定喔～
+我比較希望你是把事情想清楚之後，
+再決定要不要往下一步。
+你有任何疑問都可以問我。`
+},
+{
+category:"followup",
+title:"客戶追蹤｜推進",
+text:`我想確認一下，
+我們上次談的這件事情，
+你目前比較卡的是「不了解」、
+「還在考慮」，還是「時間安排」？
+你跟我說，我比較知道怎麼幫你。`
+},
+/* 已讀不回 */
+{
+category:"noReply",
+title:"已讀不回｜輕鬆",
+text:`哈囉～我沒有要催你啦 😂
+只是怕你忙到忘記，
+所以來偷偷提醒一下。
+有空再回我就好～`
+},
+{
+category:"noReply",
+title:"已讀不回｜關心",
+text:`想說再關心你一下～
+如果你最近比較忙也沒關係，
+等你方便的時候我們再聊。`
+},
+{
+category:"noReply",
+title:"已讀不回｜直接確認",
+text:`我想確認一下～
+上次聊的內容你還有興趣了解嗎？
+如果目前沒有也沒關係，
+你直接跟我說，我就不打擾你 😊`
+},
+/* 約見面 */
+{
+category:"meeting",
+title:"約見面｜簡單版",
+text:`這個用 LINE 講其實有點複雜，
+我們直接找個時間碰面聊一下，
+我用最簡單的方式跟你說。
+你這週哪一天比較方便？`
+},
+{
+category:"meeting",
+title:"約見面｜20分鐘",
+text:`我不用佔你太久，
+抓 20 分鐘就好。
+我先了解你的狀況，
+再看看有沒有適合你的方向。
+你比較方便平日還是假日？`
+},
+{
+category:"meeting",
+title:"約見面｜朋友版",
+text:`我覺得這個真的用文字講不完 😂
+找個時間喝杯咖啡，
+我把我最近在做的東西跟你分享一下。
+就當老朋友聊聊天。`
+},
+/* 年會 */
+{
+category:"year",
+title:"年會｜溫暖版",
+text:`12/20 是我們富足家的年會，
+今年我其實很希望你可以來。
+不是單純來聽課，
+而是可以認識很多不同領域的人，
+也能看看我們這一年到底在做什麼。
+如果你有空，我想邀請你一起來。`
+},
+{
+category:"year",
+title:"年會｜朋友版",
+text:`欸～12/20 我們有年會，
+我很想邀請你來。
+你就把它當成一場認識人、
+聽故事、看看新東西的聚會。
+我幫你留位置，好嗎？`
+},
+{
+category:"year",
+title:"年會｜高價值版",
+text:`今年的富足家年會，
+會有很多不同產業的人一起交流。
+我覺得這種場合其實很難得，
+不一定是為了成交，
+而是讓自己多認識一些人、多一些可能。
+12/20 如果你有空，我很希望你來。`
+},
+/* 轉介紹 */
+{
+category:"referral",
+title:"轉介紹｜自然版",
+text:`對了，我最近也在幫一些朋友整理房產跟財務狀況。
+如果你身邊剛好有人正在煩惱房貸、
+資產配置或房子的問題，
+你可以介紹給我。
+我會先幫他了解，不會硬推。`
+},
+{
+category:"referral",
+title:"轉介紹｜朋友版",
+text:`如果你身邊有朋友最近剛好在想：
+房子要不要留、貸款壓力怎麼處理，
+或者資產不知道怎麼運用，
+你可以丟給我聊聊。
+我先幫他把問題整理清楚就好。`
+},
+{
+category:"referral",
+title:"轉介紹｜安心版",
+text:`我最近比較希望幫到真正有需要的人。
+如果你身邊有人正在為房子、
+房貸或現金流煩惱，
+你可以讓他先找我聊聊。
+不用先決定買或賣，
+先把狀況搞懂最重要。`
+}
+];
+/* =========================
+   開關工作台
+========================= */
 function openPanel(id){
-
   document.querySelectorAll(".panel").forEach(function(panel){
     panel.classList.remove("active");
   });
-
   document.getElementById(id).classList.add("active");
-
   document.getElementById(id).scrollIntoView({
     behavior:"smooth",
     block:"center"
   });
-
   if(id==="crm") renderCRM();
+  if(id==="line") showScripts("all");
   if(id==="calendar") renderEvents();
   if(id==="todo") renderTodos();
 }
-
-
 function closePanel(id){
   document.getElementById(id).classList.remove("active");
 }
-
-
-function sendMessage(){
-
-  const input=document.getElementById("input");
-  const message=input.value.trim();
-
-  if(!message){
-    alert("先輸入你想處理的事情喔 😊");
-    return;
+/* =========================
+   LINE 話術顯示
+========================= */
+function showScripts(category,button){
+  if(button){
+    document.querySelectorAll(".category button")
+      .forEach(function(btn){
+        btn.classList.remove("active");
+      });
+    button.classList.add("active");
   }
-
-  document.getElementById("userMessage").innerText="我想處理："+message;
-
-  input.value="";
-
-  alert(
-    "收到！\n\n你的需求是：\n"+
-    message+
-    "\n\n下一階段可以接真正的 AI，直接幫你產生客戶分析與 LINE 話術。"
-  );
-}
-
-
-function quick(text){
-
-  document.getElementById("input").value=text;
-
-  document.querySelector(".hero").scrollIntoView({
-    behavior:"smooth"
-  });
-
-  setTimeout(function(){
-    document.getElementById("input").focus();
-  },500);
-}
-
-
-/* CRM */
-
-function saveCRM(){
-
-  const name=document.getElementById("crmName").value.trim();
-  const note=document.getElementById("crmNote").value.trim();
-
-  if(!name){
-    alert("請先輸入客戶姓名");
-    return;
-  }
-
-  const data=JSON.parse(localStorage.getItem("crm")||"[]");
-
-  data.push({
-    name:name,
-    note:note,
-    time:new Date().toLocaleString()
-  });
-
-  localStorage.setItem("crm",JSON.stringify(data));
-
-  document.getElementById("crmName").value="";
-  document.getElementById("crmNote").value="";
-
-  renderCRM();
-}
-
-
-function renderCRM(){
-
-  const list=document.getElementById("crmList");
-  const data=JSON.parse(localStorage.getItem("crm")||"[]");
-
-  if(!data.length){
-    list.innerHTML='<div class="empty">目前還沒有客戶</div>';
-    return;
-  }
-
-  list.innerHTML=data.map(function(item,index){
-
+  const list=document.getElementById("scriptList");
+  const filtered=
+    category==="all"
+    ? scripts
+    : scripts.filter(function(item){
+        return item.category===category;
+      });
+  list.innerHTML=filtered.map(function(item,index){
     return `
-      <div class="item">
-        <b>👤 ${item.name}</b>
-        <p>${item.note||"尚未填寫狀況"}</p>
-        <small>${item.time}</small>
-        <br><br>
-        <button onclick="deleteCRM(${index})">刪除</button>
+      <div class="script">
+        <div class="script-title">
+          ${item.title}
+        </div>
+        <div class="script-text">${item.text}</div>
+        <button
+          class="copy"
+          onclick="copyScript(${scripts.indexOf(item)})">
+          📋 複製這段
+        </button>
       </div>
     `;
-
   }).join("");
 }
-
-
-function deleteCRM(index){
-
-  const data=JSON.parse(localStorage.getItem("crm")||"[]");
-
-  data.splice(index,1);
-
-  localStorage.setItem("crm",JSON.stringify(data));
-
-  renderCRM();
-}
-
-
-/* 預約 */
-
-function saveEvent(){
-
-  const name=document.getElementById("eventName").value.trim();
-  const date=document.getElementById("eventDate").value;
-
-  if(!name||!date){
-    alert("請輸入活動名稱與日期");
-    return;
-  }
-
-  const data=JSON.parse(localStorage.getItem("events")||"[]");
-
-  data.push({
-    name:name,
-    date:date
-  });
-
-  localStorage.setItem("events",JSON.stringify(data));
-
-  document.getElementById("eventName").value="";
-  document.getElementById("eventDate").value="";
-
-  renderEvents();
-}
-
-
-function renderEvents(){
-
-  const list=document.getElementById("eventList");
-  const data=JSON.parse(localStorage.getItem("events")||"[]");
-
-  if(!data.length){
-    list.innerHTML='<div class="empty">目前沒有預約</div>';
-    return;
-  }
-
-  list.innerHTML=data.map(function(item,index){
-
-    return `
-      <div class="item">
-        📅 <b>${item.name}</b>
-        <br>
-        ${item.date}
-        <br><br>
-        <button onclick="deleteEvent(${index})">刪除</button>
-      </div>
-    `;
-
-  }).join("");
-}
-
-
-function deleteEvent(index){
-
-  const data=JSON.parse(localStorage.getItem("events")||"[]");
-
-  data.splice(index,1);
-
-  localStorage.setItem("events",JSON.stringify(data));
-
-  renderEvents();
-}
-
-
-/* 待辦 */
-
-function saveTodo(){
-
-  const text=document.getElementById("todoInput").value.trim();
-
-  if(!text){
-    alert("請輸入待辦事項");
-    return;
-  }
-
-  const data=JSON.parse(localStorage.getItem("todos")||"[]");
-
-  data.push({
-    text:text,
-    done:false
-  });
-
-  localStorage.setItem("todos",JSON.stringify(data));
-
-  document.getElementById("todoInput").value="";
-
-  renderTodos();
-}
-
-
-function renderTodos(){
-
-  const list=document.getElementById("todoList");
-  const data=JSON.parse(localStorage.getItem("todos")||"[]");
-
-  if(!data.length){
-    list.innerHTML='<div class="empty">今天還沒有待辦事項</div>';
-    return;
-  }
-
-  list.innerHTML=data.map(function(item,index){
-
-    return `
-      <div class="item">
-        <input
-          type="checkbox"
-          ${item.done?"checked":""}
-          onchange="toggleTodo(${index})"
-        >
-        ${item.done?"<s>":""}${item.text}${item.done?"</s>":""}
-        <br><br>
-        <button onclick="deleteTodo(${index})">刪除</button>
-      </div>
-    `;
-
-  }).join("");
-}
-
-
-function toggleTodo(index){
-
-  const data=JSON.parse(localStorage.getItem("todos")||"[]");
-
-  data[index].done=!data[index].done;
-
-  localStorage.setItem("todos",JSON.stringify(data));
-
-  renderTodos();
-}
-
-
-function deleteTodo(index){
-
-  const data=JSON.parse(localStorage.getItem("todos")||"[]");
-
-  data.splice(index,1);
-
-  localStorage.setItem("todos",JSON.stringify(data));
-
-  renderTodos();
-}
-
-
-/* 複製 LINE 話術 */
-
-function copyText(text){
-
+function copyScript(index){
+  const text=scripts[index].text;
   navigator.clipboard.writeText(text)
   .then(function(){
     alert("已複製，可以直接貼到 LINE 😊");
@@ -665,10 +639,202 @@ function copyText(text){
   .catch(function(){
     alert("請長按文字複製");
   });
-
 }
-
+/* =========================
+   AI 輸入
+========================= */
+function sendMessage(){
+  const input=document.getElementById("input");
+  const message=input.value.trim();
+  if(!message){
+    alert("先輸入你想處理的事情喔 😊");
+    return;
+  }
+  document.getElementById("userMessage").innerText=
+    "我想處理："+message;
+  input.value="";
+  alert(
+    "收到！\n\n你的需求是：\n"+
+    message+
+    "\n\n下一階段可以接真正的 AI，直接幫你產生客戶分析與 LINE 話術。"
+  );
+}
+function quick(text){
+  document.getElementById("input").value=text;
+  document.querySelector(".hero").scrollIntoView({
+    behavior:"smooth"
+  });
+  setTimeout(function(){
+    document.getElementById("input").focus();
+  },500);
+}
+/* =========================
+   CRM
+========================= */
+function saveCRM(){
+  const name=document.getElementById("crmName").value.trim();
+  const note=document.getElementById("crmNote").value.trim();
+  if(!name){
+    alert("請先輸入客戶姓名");
+    return;
+  }
+  const data=
+    JSON.parse(localStorage.getItem("crm")||"[]");
+  data.push({
+    name:name,
+    note:note,
+    time:new Date().toLocaleString()
+  });
+  localStorage.setItem("crm",JSON.stringify(data));
+  document.getElementById("crmName").value="";
+  document.getElementById("crmNote").value="";
+  renderCRM();
+}
+function renderCRM(){
+  const list=document.getElementById("crmList");
+  const data=
+    JSON.parse(localStorage.getItem("crm")||"[]");
+  if(!data.length){
+    list.innerHTML=
+      '<div class="empty">目前還沒有客戶</div>';
+    return;
+  }
+  list.innerHTML=data.map(function(item,index){
+    return `
+      <div class="item">
+        <b>👤 ${item.name}</b>
+        <p>${item.note||"尚未填寫狀況"}</p>
+        <small>${item.time}</small>
+        <br><br>
+        <button onclick="deleteCRM(${index})">
+          刪除
+        </button>
+      </div>
+    `;
+  }).join("");
+}
+function deleteCRM(index){
+  const data=
+    JSON.parse(localStorage.getItem("crm")||"[]");
+  data.splice(index,1);
+  localStorage.setItem("crm",JSON.stringify(data));
+  renderCRM();
+}
+/* =========================
+   預約
+========================= */
+function saveEvent(){
+  const name=
+    document.getElementById("eventName").value.trim();
+  const date=
+    document.getElementById("eventDate").value;
+  if(!name||!date){
+    alert("請輸入活動名稱與日期");
+    return;
+  }
+  const data=
+    JSON.parse(localStorage.getItem("events")||"[]");
+  data.push({
+    name:name,
+    date:date
+  });
+  localStorage.setItem("events",JSON.stringify(data));
+  document.getElementById("eventName").value="";
+  document.getElementById("eventDate").value="";
+  renderEvents();
+}
+function renderEvents(){
+  const list=document.getElementById("eventList");
+  const data=
+    JSON.parse(localStorage.getItem("events")||"[]");
+  if(!data.length){
+    list.innerHTML=
+      '<div class="empty">目前沒有預約</div>';
+    return;
+  }
+  list.innerHTML=data.map(function(item,index){
+    return `
+      <div class="item">
+        📅 <b>${item.name}</b>
+        <br>
+        ${item.date}
+        <br><br>
+        <button onclick="deleteEvent(${index})">
+          刪除
+        </button>
+      </div>
+    `;
+  }).join("");
+}
+function deleteEvent(index){
+  const data=
+    JSON.parse(localStorage.getItem("events")||"[]");
+  data.splice(index,1);
+  localStorage.setItem("events",JSON.stringify(data));
+  renderEvents();
+}
+/* =========================
+   待辦
+========================= */
+function saveTodo(){
+  const text=
+    document.getElementById("todoInput").value.trim();
+  if(!text){
+    alert("請輸入待辦事項");
+    return;
+  }
+  const data=
+    JSON.parse(localStorage.getItem("todos")||"[]");
+  data.push({
+    text:text,
+    done:false
+  });
+  localStorage.setItem("todos",JSON.stringify(data));
+  document.getElementById("todoInput").value="";
+  renderTodos();
+}
+function renderTodos(){
+  const list=document.getElementById("todoList");
+  const data=
+    JSON.parse(localStorage.getItem("todos")||"[]");
+  if(!data.length){
+    list.innerHTML=
+      '<div class="empty">今天還沒有待辦事項</div>';
+    return;
+  }
+  list.innerHTML=data.map(function(item,index){
+    return `
+      <div class="item">
+        <input
+          type="checkbox"
+          ${item.done?"checked":""}
+          onchange="toggleTodo(${index})"
+        >
+        ${item.done?"<s>":""}
+        ${item.text}
+        ${item.done?"</s>":""}
+        <br><br>
+        <button onclick="deleteTodo(${index})">
+          刪除
+        </button>
+      </div>
+    `;
+  }).join("");
+}
+function toggleTodo(index){
+  const data=
+    JSON.parse(localStorage.getItem("todos")||"[]");
+  data[index].done=!data[index].done;
+  localStorage.setItem("todos",JSON.stringify(data));
+  renderTodos();
+}
+function deleteTodo(index){
+  const data=
+    JSON.parse(localStorage.getItem("todos")||"[]");
+  data.splice(index,1);
+  localStorage.setItem("todos",JSON.stringify(data));
+  renderTodos();
+}
 </script>
-
 </body>
 </html>
