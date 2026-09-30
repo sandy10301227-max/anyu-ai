@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>安妤 AI</title>
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+<style>
+body{margin:0;background:#f6f1f7;color:#292331;font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif}
+.wrap{max-width:680px;margin:auto;padding:20px 16px 40px}.hero{background:linear-gradient(135deg,#ead8f1,#f8e7dc);border-radius:28px;padding:24px}.avatar{font-size:36px;margin-bottom:10px}h1{margin:0 0 6px}.sub{color:#6e6574}.card{background:white;border-radius:22px;padding:18px;margin-top:16px;box-shadow:0 5px 20px #0001}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}button{border:0;border-radius:16px;padding:15px;background:#f7f3f8;font-weight:700;font-size:16px}button.primary{background:#6f4b82;color:white}.chat{min-height:120px;background:#f8f6f9;border-radius:18px;padding:12px}.msg{padding:10px 13px;border-radius:16px;margin:7px 0;max-width:88%;line-height:1.5}.ai{background:white}.me{background:#d9f8c4;margin-left:auto}.row{display:flex;gap:8px;margin-top:10px}.row input{flex:1;border:1px solid #ddd4e2;border-radius:16px;padding:14px;font-size:16px}.small{font-size:13px;color:#817885;line-height:1.5}
+</style>
+</head>
+<body><div class="wrap">
+<section class="hero"><div class="avatar">✨</div><h1>安妤 AI</h1><p class="sub">財富 × 房產活化 × 紫微 × 業務陪跑</p><p id="user" class="small">正在連接 LINE…</p></section>
+<section class="card"><h2>今天想讓安妤 AI 幫你什麼？</h2><div class="grid">
+<button onclick="quick('房產活化')">🏠 房產活化</button><button onclick="quick('財務分析')">💰 財務分析</button>
+<button onclick="quick('紫微財富')">⭐ 紫微財富</button><button onclick="quick('業務陪跑')">🎯 業務陪跑</button>
+</div></section>
+<section class="card"><h2>🤖 問安妤 AI</h2><div id="chat" class="chat"><div class="msg ai">嗨，我是安妤 AI 👋<br>你可以直接把客戶狀況、房產問題或想傳給客戶的話丟給我。</div></div>
+<div class="row"><input id="input" placeholder="例如：幫我跟進一位很久沒聯絡的客戶"><button class="primary" onclick="send()">送出</button></div>
+<p class="small">目前先完成 LIFF 與工作台介面；真正的 AI 回覆與 CRM 資料庫下一階段接上。</p></section>
+<section class="card"><h2>我的工作台</h2><div class="grid"><button>👥 客戶 CRM</button><button>💬 LINE 回覆</button><button>📅 預約／活動</button><button>📝 今日待辦</button></div></section>
+</div>
+<script>
+const LIFF_ID="2010116876-O9kq55o7";
+async function init(){try{await liff.init({liffId:LIFF_ID});if(liff.isLoggedIn()){const p=await liff.getProfile();document.getElementById("user").textContent=`嗨，${p.displayName}，安妤 AI 已連接 LINE`;}else{document.getElementById("user").textContent="安妤 AI 工作台";}}catch(e){document.getElementById("user").textContent="安妤 AI 工作台";}}
+function add(t,c){const d=document.createElement("div");d.className="msg "+c;d.innerHTML=t.replace(/\n/g,"<br>");document.getElementById("chat").appendChild(d)}
+function quick(t){document.getElementById("input").value="我想處理："+t;send()}
+function send(){const e=document.getElementById("input"),t=e.value.trim();if(!t)return;add(t,"me");e.value="";setTimeout(()=>add("收到。下一階段我可以把這裡接上真正的 AI，直接幫你產生客戶分析、LINE 邀約與跟進話術。","ai"),350)}
+init();
+</script></body></html>
