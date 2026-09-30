@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>安妤 AI｜超業教練</title>
+<title>超業 AI 教練｜安妤</title>
 
 <style>
 *{box-sizing:border-box}
@@ -12,44 +12,85 @@ body{
   margin:0;
   background:#f6f1f7;
   color:#292331;
-  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft JhengHei",sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC",
+  "PingFang TC","Microsoft JhengHei",sans-serif;
 }
 
 .wrap{
   max-width:680px;
   margin:auto;
-  padding:20px 16px 60px;
+  padding:22px 16px 70px;
 }
 
 .hero{
   background:white;
   border-radius:28px;
-  padding:28px 22px;
+  padding:30px 24px;
   margin-bottom:18px;
-  box-shadow:0 8px 30px rgba(80,60,100,.08);
+  box-shadow:0 8px 30px rgba(80,50,100,.08);
 }
 
-h1{
-  margin:0;
+.hero h1{
+  margin:0 0 8px;
   font-size:30px;
 }
 
-h2{
-  margin:0 0 18px;
-  font-size:23px;
-}
-
-.sub{
+.hero p{
+  margin:0;
   color:#777;
-  margin-top:8px;
+  font-size:16px;
 }
 
 .card{
   background:white;
-  border-radius:24px;
-  padding:22px;
+  border-radius:28px;
+  padding:24px;
   margin-bottom:18px;
-  box-shadow:0 8px 30px rgba(80,60,100,.07);
+  box-shadow:0 8px 30px rgba(80,50,100,.07);
+}
+
+h2{
+  margin:0 0 20px;
+  font-size:24px;
+}
+
+input,textarea,select{
+  width:100%;
+  padding:15px;
+  margin-bottom:12px;
+  border:1px solid #ddd3e3;
+  border-radius:16px;
+  font-size:16px;
+  background:#fff;
+}
+
+textarea{
+  min-height:100px;
+  resize:vertical;
+}
+
+button{
+  border:0;
+  border-radius:16px;
+  padding:14px 18px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.primary{
+  background:#76518b;
+  color:white;
+}
+
+.secondary{
+  background:#f3edf5;
+  color:#76518b;
+}
+
+.danger{
+  background:#f7e8e8;
+  color:#a33;
 }
 
 .grid{
@@ -58,60 +99,69 @@ h2{
   gap:12px;
 }
 
-button{
-  border:0;
+.menuBtn{
+  background:#f8f4f9;
+  color:#1677e8;
+  min-height:70px;
+  font-size:17px;
+}
+
+.customer{
+  border:1px solid #eee;
   border-radius:18px;
-  padding:15px 12px;
-  font-size:16px;
-  font-weight:700;
-  background:#f4eff8;
-  color:#3c3150;
-  cursor:pointer;
+  padding:16px;
+  margin-top:12px;
 }
 
-button:active{
-  transform:scale(.98);
+.customer strong{
+  font-size:19px;
 }
 
-.primary{
-  background:#75518b;
-  color:white;
+.small{
+  color:#888;
+  font-size:14px;
+  line-height:1.7;
 }
 
-input,textarea,select{
-  width:100%;
-  padding:15px;
-  border:1px solid #ddd6e3;
-  border-radius:16px;
-  font-size:16px;
-  margin-bottom:10px;
-  background:white;
-}
-
-textarea{
-  min-height:100px;
-  resize:vertical;
+.tag{
+  display:inline-block;
+  padding:5px 10px;
+  background:#eee6f2;
+  color:#76518b;
+  border-radius:20px;
+  font-size:13px;
+  margin-top:6px;
 }
 
 .hidden{
   display:none;
 }
 
-.reply{
-  background:#f8f5fa;
+.replyCategory{
+  width:100%;
+  text-align:left;
+  background:#f8f4f9;
+  margin-bottom:8px;
+  color:#292331;
+}
+
+.replyBox{
+  background:#faf8fb;
   border-radius:18px;
   padding:16px;
   margin-top:10px;
-  line-height:1.7;
+  line-height:1.8;
 }
 
-.reply button{
-  margin-top:10px;
-  padding:9px 14px;
-  font-size:14px;
+.replyItem{
+  background:white;
+  border-radius:15px;
+  padding:14px;
+  margin-bottom:10px;
+  border:1px solid #eee;
 }
 
-.item{
+.task{
   display:flex;
   align-items:center;
   gap:10px;
@@ -119,24 +169,42 @@ textarea{
   border-bottom:1px solid #eee;
 }
 
-.item:last-child{
-  border-bottom:0;
+.task.done span{
+  text-decoration:line-through;
+  color:#aaa;
 }
 
-.item span{
-  flex:1;
+.task input{
+  width:20px;
+  height:20px;
+  margin:0;
 }
 
-.small{
-  color:#888;
-  font-size:14px;
+.task button{
+  margin-left:auto;
+  padding:7px 10px;
 }
 
 .back{
-  margin-bottom:14px;
-  background:transparent;
-  padding:5px;
-  color:#75518b;
+  display:inline-block;
+  margin-bottom:15px;
+  color:#76518b;
+  font-weight:700;
+  text-decoration:none;
+}
+
+.notice{
+  padding:14px;
+  border-radius:16px;
+  background:#fff8dc;
+  color:#695b2b;
+  font-size:14px;
+  line-height:1.7;
+}
+
+@media(max-width:480px){
+  .grid{grid-template-columns:1fr}
+  .hero h1{font-size:27px}
 }
 </style>
 </head>
@@ -145,463 +213,718 @@ textarea{
 
 <div class="wrap">
 
-  <div class="hero">
-    <h1>🤖 安妤 AI</h1>
-    <div class="sub">你的超業 AI 教練｜陪你找客戶、回 LINE、做追蹤</div>
-  </div>
-
   <!-- 首頁 -->
-  <div id="home">
+  <section class="hero">
+    <h1>🤖 超業 AI 教練</h1>
+    <p>你的業務陪跑教練｜陪你找客戶・回 LINE・做追蹤</p>
+  </section>
 
-    <div class="card">
-      <h2>今天想讓安妤 AI 幫你什麼？</h2>
+  <!-- 快速入口 -->
+  <section class="card">
+    <h2>今天想做什麼？</h2>
 
-      <div class="grid">
-        <button onclick="show('crm')">👥 客戶 CRM</button>
-        <button onclick="show('line')">💬 LINE 回覆</button>
-        <button onclick="show('calendar')">📅 預約／活動</button>
-        <button onclick="show('todo')">📝 今日待辦</button>
-      </div>
+    <div class="grid">
+      <button class="menuBtn" onclick="showSection('crm')">
+        👥 客戶 CRM
+      </button>
+
+      <button class="menuBtn" onclick="showSection('line')">
+        💬 LINE 回覆
+      </button>
+
+      <button class="menuBtn" onclick="showSection('calendar')">
+        📅 預約／活動
+      </button>
+
+      <button class="menuBtn" onclick="showSection('tasks')">
+        📝 今日待辦
+      </button>
     </div>
-
-    <div class="card">
-      <h2>🔥 教練提醒</h2>
-      <p>
-        不急著成交，先把客戶聊懂。<br>
-        每一次聯絡，都留下下一步。
-      </p>
-    </div>
-
-  </div>
+  </section>
 
 
   <!-- CRM -->
-  <div id="crm" class="hidden">
+  <section id="crm" class="card hidden">
 
-    <button class="back" onclick="show('home')">← 回首頁</button>
+    <a class="back" href="#" onclick="backHome()">← 回首頁</a>
 
-    <div class="card">
-      <h2>👥 客戶 CRM</h2>
+    <h2>👥 客戶 CRM</h2>
 
-      <input id="customerName" placeholder="客戶姓名／稱呼">
-      <input id="customerRole" placeholder="身份，例如：老闆、朋友、同學">
-      <input id="customerNeed" placeholder="目前需求，例如：房貸、資產活化">
-      <textarea id="customerNote" placeholder="備註／客戶狀況"></textarea>
+    <input id="name" placeholder="客戶姓名／稱呼">
 
-      <button class="primary" onclick="addCustomer()">
-        ＋ 新增客戶
-      </button>
+    <input id="identity" placeholder="身份，例如：老闆、朋友、同學">
+
+    <input id="need" placeholder="目前需求，例如：房貸、資產活化">
+
+    <textarea id="note" placeholder="備註／客戶狀況"></textarea>
+
+    <select id="stage">
+      <option value="新客">新客</option>
+      <option value="已認識">已認識</option>
+      <option value="已聯絡">已聯絡</option>
+      <option value="有興趣">有興趣</option>
+      <option value="邀約中">邀約中</option>
+      <option value="追蹤中">追蹤中</option>
+      <option value="成交">成交</option>
+    </select>
+
+    <button class="primary" onclick="addCustomer()">
+      ＋ 新增客戶
+    </button>
+
+    <div class="notice" style="margin-top:16px;">
+      💡 目前資料會先保存在這支手機的瀏覽器裡。
+      之後我們再接 Notion，讓網站新增的客戶同步到你的「02｜客戶名單」。
     </div>
 
-    <div class="card">
-      <h2>我的客戶</h2>
-      <div id="customerList"></div>
-    </div>
+    <h2 style="margin-top:28px;">我的客戶</h2>
 
-  </div>
+    <div id="customerList"></div>
+
+  </section>
 
 
   <!-- LINE -->
-  <div id="line" class="hidden">
+  <section id="line" class="card hidden">
 
-    <button class="back" onclick="show('home')">← 回首頁</button>
+    <a class="back" href="#" onclick="backHome()">← 回首頁</a>
 
-    <div class="card">
-      <h2>💬 LINE 人性回覆</h2>
+    <h2>💬 LINE 回覆</h2>
 
-      <p class="small">
-        先選情境，安妤 AI 教練再幫你想話。
-      </p>
+    <p class="small">
+      先選情境，不要一次把所有話術塞滿畫面。
+      我會幫你挑「比較像人講的」回法。
+    </p>
 
-      <select id="lineSituation" onchange="generateReplies()">
-        <option value="">請選擇客戶情境</option>
-        <option value="久沒聯絡">很久沒聯絡</option>
-        <option value="已讀不回">客戶已讀不回</option>
-        <option value="考慮">客戶說考慮一下</option>
-        <option value="沒時間">客戶說沒時間</option>
-        <option value="有興趣">客戶有興趣</option>
-        <option value="拒絕">客戶婉拒</option>
-      </select>
+    <button class="replyCategory" onclick="showReplies('久未聯絡')">
+      👋 久未聯絡
+    </button>
 
-      <div id="replyList"></div>
-    </div>
+    <button class="replyCategory" onclick="showReplies('已讀不回')">
+      👀 客戶已讀不回
+    </button>
 
-  </div>
+    <button class="replyCategory" onclick="showReplies('有興趣')">
+      ❤️ 客戶有興趣
+    </button>
+
+    <button class="replyCategory" onclick="showReplies('再看看')">
+      🤔 客戶說「再看看」
+    </button>
+
+    <button class="replyCategory" onclick="showReplies('嫌貴')">
+      💰 客戶覺得貴
+    </button>
+
+    <button class="replyCategory" onclick="showReplies('邀約')">
+      📅 活動／見面邀約
+    </button>
+
+    <button class="replyCategory" onclick="showReplies('關心')">
+      ☕ 關心客戶近況
+    </button>
+
+    <div id="replyResult"></div>
+
+  </section>
 
 
-  <!-- 預約 -->
-  <div id="calendar" class="hidden">
+  <!-- 行事曆 -->
+  <section id="calendar" class="card hidden">
 
-    <button class="back" onclick="show('home')">← 回首頁</button>
+    <a class="back" href="#" onclick="backHome()">← 回首頁</a>
 
-    <div class="card">
-      <h2>📅 預約／活動</h2>
+    <h2>📅 預約／活動</h2>
 
-      <input id="eventTitle" placeholder="活動名稱／客戶姓名">
+    <input id="eventTitle" placeholder="活動名稱，例如：與王姐聊房產">
 
-      <input id="eventDate" type="date">
+    <input id="eventDate" type="date">
 
-      <input id="eventTime" type="time">
+    <input id="eventStart" type="time">
 
-      <button class="primary" onclick="addEvent()">
-        ＋ 新增預約
-      </button>
-    </div>
+    <input id="eventEnd" type="time">
 
-    <div class="card">
-      <h2>我的預約</h2>
-      <div id="eventList"></div>
-    </div>
+    <input id="eventLocation" placeholder="地點">
 
-  </div>
+    <textarea id="eventNote" placeholder="備註"></textarea>
+
+    <button class="primary" onclick="addGoogleCalendar()">
+      📅 加入 Google 行事曆
+    </button>
+
+    <p class="small" style="margin-top:12px;">
+      點下去後會開啟 Google 行事曆，你確認後即可建立。
+    </p>
+
+  </section>
 
 
   <!-- 待辦 -->
-  <div id="todo" class="hidden">
+  <section id="tasks" class="card hidden">
 
-    <button class="back" onclick="show('home')">← 回首頁</button>
+    <a class="back" href="#" onclick="backHome()">← 回首頁</a>
 
-    <div class="card">
-      <h2>📝 今日待辦</h2>
+    <h2>📝 今日待辦</h2>
 
-      <input id="todoInput" placeholder="例如：跟進王姐">
+    <input id="taskInput" placeholder="今天要完成什麼？">
 
-      <button class="primary" onclick="addTodo()">
-        ＋ 新增待辦
-      </button>
-    </div>
+    <button class="primary" onclick="addTask()">
+      ＋ 新增待辦
+    </button>
 
-    <div class="card">
-      <div id="todoList"></div>
-    </div>
+    <div id="taskList" style="margin-top:15px;"></div>
 
-  </div>
+  </section>
 
 </div>
 
 
 <script>
 
-let customers =
-JSON.parse(localStorage.getItem("customers") || "[]");
+/* =========================
+   頁面切換
+========================= */
 
-let todos =
-JSON.parse(localStorage.getItem("todos") || "[]");
+function showSection(id){
 
-let events =
-JSON.parse(localStorage.getItem("events") || "[]");
+  document.querySelectorAll(".card").forEach(function(el){
 
+    if(
+      el.id === "crm" ||
+      el.id === "line" ||
+      el.id === "calendar" ||
+      el.id === "tasks"
+    ){
+      el.classList.add("hidden");
+    }
 
-function show(page){
-
-  ["home","crm","line","calendar","todo"]
-  .forEach(id=>{
-    document.getElementById(id).classList.add("hidden");
   });
 
-  document.getElementById(page).classList.remove("hidden");
+  document.getElementById(id).classList.remove("hidden");
 
-  if(page==="crm") renderCustomers();
-  if(page==="todo") renderTodos();
-  if(page==="calendar") renderEvents();
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+function backHome(){
+
+  document.querySelectorAll("#crm,#line,#calendar,#tasks")
+  .forEach(function(el){
+    el.classList.add("hidden");
+  });
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 }
 
 
-/* CRM */
+/* =========================
+   客戶 CRM
+========================= */
+
+function getCustomers(){
+
+  return JSON.parse(
+    localStorage.getItem("anyuCustomers") || "[]"
+  );
+
+}
+
+function saveCustomers(data){
+
+  localStorage.setItem(
+    "anyuCustomers",
+    JSON.stringify(data)
+  );
+
+}
 
 function addCustomer(){
 
-  const name=document.getElementById("customerName").value.trim();
+  const name =
+    document.getElementById("name").value.trim();
 
   if(!name){
+
     alert("請先輸入客戶姓名／稱呼");
+
     return;
+
   }
 
-  customers.push({
+  const customer = {
+
+    id:Date.now(),
+
     name:name,
-    role:document.getElementById("customerRole").value,
-    need:document.getElementById("customerNeed").value,
-    note:document.getElementById("customerNote").value
-  });
 
-  localStorage.setItem("customers",JSON.stringify(customers));
+    identity:
+      document.getElementById("identity").value,
 
-  document.getElementById("customerName").value="";
-  document.getElementById("customerRole").value="";
-  document.getElementById("customerNeed").value="";
-  document.getElementById("customerNote").value="";
+    need:
+      document.getElementById("need").value,
 
-  renderCustomers();
+    note:
+      document.getElementById("note").value,
 
-  alert("客戶已新增！");
-}
+    stage:
+      document.getElementById("stage").value,
 
-
-function renderCustomers(){
-
-  const box=document.getElementById("customerList");
-
-  if(customers.length===0){
-    box.innerHTML='<p class="small">目前還沒有客戶。</p>';
-    return;
-  }
-
-  box.innerHTML=customers.map((c,i)=>`
-
-    <div class="item">
-      <span>
-        <b>${c.name}</b><br>
-        <small>${c.role || ""} ${c.need || ""}</small>
-      </span>
-
-      <button onclick="deleteCustomer(${i})">刪除</button>
-    </div>
-
-  `).join("");
-}
-
-
-function deleteCustomer(i){
-
-  if(confirm("確定要刪除這位客戶嗎？")){
-
-    customers.splice(i,1);
-
-    localStorage.setItem(
-      "customers",
-      JSON.stringify(customers)
-    );
-
-    renderCustomers();
-  }
-}
-
-
-/* LINE */
-
-function generateReplies(){
-
-  const situation=
-  document.getElementById("lineSituation").value;
-
-  const replies={
-
-    "久沒聯絡":[
-      "嗨～突然想到你，最近過得還好嗎？😊",
-      "好久沒跟你聊了，最近工作跟生活還順嗎？",
-      "前陣子想到我們之前聊的事情，想說來關心你一下～最近有沒有什麼新的變化？"
-    ],
-
-    "已讀不回":[
-      "我猜你最近應該比較忙，我先不打擾你～有空再跟我說一聲就好 😊",
-      "沒關係，你忙你的，有需要我的時候再找我，我都在。",
-      "我怕前面訊息被你忙到漏掉，所以再輕輕提醒一下～不用急著回。"
-    ],
-
-    "考慮":[
-      "可以啊，這種事情本來就不用急著決定。你現在主要是在考慮哪一個部分？",
-      "沒問題，你先想清楚比較重要。如果你願意，我可以陪你把疑慮整理一下。",
-      "我懂，畢竟跟錢有關一定要想清楚。你最在意的是風險、資金，還是未來的安排？"
-    ],
-
-    "沒時間":[
-      "我懂，大家現在真的都很忙 😂 那我不佔你時間，我只問你一個問題就好。",
-      "沒關係，我知道你忙。那我們不用約很久，找一個你方便的時間聊一下就好。",
-      "可以，我配合你的時間。你比較方便平日晚上，還是假日？"
-    ],
-
-    "有興趣":[
-      "很好～那我先不急著跟你講方案，我想先了解你的狀況，這樣才不會亂推薦。",
-      "可以，那我想先問你一件事：你現在最想解決的是哪一個問題？",
-      "有興趣就好 😊 我們先聊你的需求，我再幫你看哪一種方式比較適合。"
-    ],
-
-    "拒絕":[
-      "沒問題，我尊重你 😊 只是我想了解一下，是目前沒有需求，還是這件事情你比較擔心風險？",
-      "了解，我不勉強你。以後如果你有任何房產或財務上的問題，都可以問我。",
-      "OK，我懂。那我就先不打擾你，之後有需要再找我就好。"
-    ]
+    created:
+      new Date().toLocaleDateString("zh-TW")
 
   };
 
-  const list=replies[situation] || [];
+  const customers = getCustomers();
 
-  document.getElementById("replyList").innerHTML=
-  list.map((text,i)=>`
+  customers.unshift(customer);
 
-    <div class="reply">
-      ${text}
-      <br>
-      <button onclick="copyText(${JSON.stringify(text)})">
-        📋 複製
-      </button>
-    </div>
+  saveCustomers(customers);
 
-  `).join("");
+  document.getElementById("name").value="";
+  document.getElementById("identity").value="";
+  document.getElementById("need").value="";
+  document.getElementById("note").value="";
+
+  renderCustomers();
+
+  alert("✅ 客戶已新增");
+
 }
 
+function deleteCustomer(id){
+
+  if(!confirm("確定要刪除這位客戶嗎？")) return;
+
+  const customers =
+    getCustomers().filter(function(c){
+      return c.id !== id;
+    });
+
+  saveCustomers(customers);
+
+  renderCustomers();
+
+}
+
+function renderCustomers(){
+
+  const list =
+    document.getElementById("customerList");
+
+  const customers = getCustomers();
+
+  if(customers.length === 0){
+
+    list.innerHTML =
+      '<p class="small">目前還沒有客戶。</p>';
+
+    return;
+
+  }
+
+  list.innerHTML =
+    customers.map(function(c){
+
+      return `
+        <div class="customer">
+
+          <strong>${escapeHTML(c.name)}</strong>
+
+          <div class="tag">
+            ${escapeHTML(c.stage)}
+          </div>
+
+          <p class="small">
+            身份：${escapeHTML(c.identity || "未填")}<br>
+            需求：${escapeHTML(c.need || "未填")}<br>
+            備註：${escapeHTML(c.note || "未填")}
+          </p>
+
+          <button
+            class="danger"
+            onclick="deleteCustomer(${c.id})">
+            刪除
+          </button>
+
+        </div>
+      `;
+
+    }).join("");
+
+}
+
+function escapeHTML(text){
+
+  return String(text || "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+   LINE 人性話術
+========================= */
+
+const replies = {
+
+  "久未聯絡":[
+
+    "最近突然想到你，想說來關心一下～最近過得還好嗎？😊",
+
+    "嗨～好久沒聊了！最近工作跟生活還順利嗎？有空再一起喝杯咖啡 ☕",
+
+    "前陣子比較忙，突然想到你，就想說來跟你打個招呼～最近還好嗎？"
+
+  ],
+
+  "已讀不回":[
+
+    "沒事～你忙你的，我只是剛好想到你，先跟你打個招呼 😊",
+
+    "我猜你最近應該滿忙的，我先不打擾你，有空再聊就好～",
+
+    "不用急著回我啦～等你方便的時候我們再聊，我只是想關心一下你。"
+
+  ],
+
+  "有興趣":[
+
+    "好呀～那我們不用急著決定，我先把你比較在意的地方整理給你，你看完我們再聊。",
+
+    "我懂，你會有興趣一定也是因為剛好有碰到你的需求，我們可以先把狀況了解清楚。",
+
+    "可以～我比較希望先知道你的實際狀況，再看什麼方式適合你，不會一開始就叫你做決定。"
+
+  ],
+
+  "再看看":[
+
+    "可以啊～這種事情本來就不用急，你先想想，有問題隨時丟給我。",
+
+    "沒問題，我完全理解。你先看看、想清楚比較重要，有需要我再陪你一起分析。",
+
+    "好呀，不急著決定。我比較希望你是真的了解之後，覺得適合自己再做。"
+
+  ],
+
+  "嫌貴":[
+
+    "我懂，如果只看金額確實會有壓力。要不要我們先看看你真正想解決的是哪一塊？",
+
+    "可以理解～所以我反而不想只跟你談價格，我們先看看這筆錢對你來說到底值不值得。",
+
+    "沒關係，我們不用急著談買不買。先把你的需求跟數字攤開來看，會比較清楚。"
+
+  ],
+
+  "邀約":[
+
+    "這週有一個小活動，我覺得你可能會有興趣。不是一定要做什麼決定，先來聽聽看也可以。",
+
+    "我想邀你來一趟，因為內容剛好跟你之前跟我聊的狀況有關。你有空的話，我幫你留位置。",
+
+    "如果你最近剛好有空，我想約你來聊聊。現場會比較好把你的問題一次說清楚。"
+
+  ],
+
+  "關心":[
+
+    "最近還好嗎？工作跟生活都還順嗎？突然想到你，就想關心一下 😊",
+
+    "最近天氣變化滿大的，你也別太累了～最近過得怎麼樣？",
+
+    "最近有沒有比較忙？如果有什麼事情卡著，也可以跟我說，我陪你一起想。"
+
+  ]
+
+};
+
+
+function showReplies(category){
+
+  const box =
+    document.getElementById("replyResult");
+
+  box.innerHTML = `
+
+    <div class="replyBox">
+
+      <h3>${category}｜人性回覆</h3>
+
+      ${replies[category].map(function(text,index){
+
+        return `
+
+          <div class="replyItem">
+
+            ${escapeHTML(text)}
+
+            <br><br>
+
+            <button
+              class="secondary"
+              onclick="copyText(${JSON.stringify(text)})">
+              📋 複製這句
+            </button>
+
+          </div>
+
+        `;
+
+      }).join("")}
+
+    </div>
+
+  `;
+
+}
 
 function copyText(text){
 
-  navigator.clipboard.writeText(text);
+  navigator.clipboard.writeText(text)
+    .then(function(){
 
-  alert("已複製，可以貼到 LINE 了！");
+      alert("✅ 已複製，可以直接貼到 LINE");
+
+    })
+    .catch(function(){
+
+      alert("請長按文字後複製");
+
+    });
+
 }
 
 
-/* 待辦 */
+/* =========================
+   Google 行事曆
+========================= */
 
-function addTodo(){
+function addGoogleCalendar(){
 
-  const input=document.getElementById("todoInput");
-  const text=input.value.trim();
+  const title =
+    document.getElementById("eventTitle").value.trim();
 
-  if(!text) return;
+  const date =
+    document.getElementById("eventDate").value;
 
-  todos.push({
-    text:text,
-    done:false
-  });
+  const start =
+    document.getElementById("eventStart").value;
+
+  const end =
+    document.getElementById("eventEnd").value;
+
+  const location =
+    document.getElementById("eventLocation").value;
+
+  const note =
+    document.getElementById("eventNote").value;
+
+  if(!title || !date || !start){
+
+    alert("請至少填寫活動名稱、日期與開始時間");
+
+    return;
+
+  }
+
+  const startDate =
+    date.replaceAll("-","") +
+    "T" +
+    start.replace(":","") +
+    "00";
+
+  let endDate;
+
+  if(end){
+
+    endDate =
+      date.replaceAll("-","") +
+      "T" +
+      end.replace(":","") +
+      "00";
+
+  }else{
+
+    const d =
+      new Date(date + "T" + start);
+
+    d.setHours(d.getHours()+1);
+
+    endDate =
+      d.getFullYear().toString() +
+      String(d.getMonth()+1).padStart(2,"0") +
+      String(d.getDate()).padStart(2,"0") +
+      "T" +
+      String(d.getHours()).padStart(2,"0") +
+      String(d.getMinutes()).padStart(2,"0") +
+      "00";
+
+  }
+
+  const url =
+    "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+    "&text=" + encodeURIComponent(title) +
+    "&dates=" + startDate + "/" + endDate +
+    "&location=" + encodeURIComponent(location) +
+    "&details=" + encodeURIComponent(note);
+
+  window.open(url,"_blank");
+
+}
+
+
+/* =========================
+   今日待辦
+========================= */
+
+function getTasks(){
+
+  return JSON.parse(
+    localStorage.getItem("anyuTasks") || "[]"
+  );
+
+}
+
+function saveTasks(data){
 
   localStorage.setItem(
-    "todos",
-    JSON.stringify(todos)
+    "anyuTasks",
+    JSON.stringify(data)
   );
+
+}
+
+function addTask(){
+
+  const input =
+    document.getElementById("taskInput");
+
+  const text =
+    input.value.trim();
+
+  if(!text){
+
+    alert("請輸入待辦事項");
+
+    return;
+
+  }
+
+  const tasks = getTasks();
+
+  tasks.push({
+
+    id:Date.now(),
+
+    text:text,
+
+    done:false
+
+  });
+
+  saveTasks(tasks);
 
   input.value="";
 
-  renderTodos();
+  renderTasks();
+
 }
 
+function toggleTask(id){
 
-function renderTodos(){
+  const tasks = getTasks();
 
-  const box=document.getElementById("todoList");
+  const task =
+    tasks.find(function(t){
+      return t.id === id;
+    });
 
-  if(todos.length===0){
-    box.innerHTML='<p class="small">今天還沒有待辦事項。</p>';
-    return;
+  if(task){
+
+    task.done = !task.done;
+
   }
 
-  box.innerHTML=todos.map((t,i)=>`
+  saveTasks(tasks);
 
-    <div class="item">
+  renderTasks();
 
-      <input
-        type="checkbox"
-        style="width:22px;margin:0"
-        ${t.done ? "checked" : ""}
-        onchange="toggleTodo(${i})"
-      >
-
-      <span style="${t.done ? 'text-decoration:line-through;color:#999' : ''}">
-        ${t.text}
-      </span>
-
-      <button onclick="deleteTodo(${i})">刪除</button>
-
-    </div>
-
-  `).join("");
 }
 
+function deleteTask(id){
 
-function toggleTodo(i){
+  const tasks =
+    getTasks().filter(function(t){
+      return t.id !== id;
+    });
 
-  todos[i].done=!todos[i].done;
+  saveTasks(tasks);
 
-  localStorage.setItem(
-    "todos",
-    JSON.stringify(todos)
-  );
+  renderTasks();
 
-  renderTodos();
 }
 
+function renderTasks(){
 
-function deleteTodo(i){
+  const box =
+    document.getElementById("taskList");
 
-  todos.splice(i,1);
+  const tasks = getTasks();
 
-  localStorage.setItem(
-    "todos",
-    JSON.stringify(todos)
-  );
+  if(tasks.length === 0){
 
-  renderTodos();
-}
+    box.innerHTML =
+      '<p class="small">今天還沒有待辦。</p>';
 
-
-/* 預約 */
-
-function addEvent(){
-
-  const title=document.getElementById("eventTitle").value.trim();
-  const date=document.getElementById("eventDate").value;
-  const time=document.getElementById("eventTime").value;
-
-  if(!title || !date || !time){
-    alert("請把活動名稱、日期、時間填完整");
     return;
+
   }
 
-  events.push({
-    title:title,
-    date:date,
-    time:time
-  });
+  box.innerHTML =
+    tasks.map(function(t){
 
-  localStorage.setItem(
-    "events",
-    JSON.stringify(events)
-  );
+      return `
 
-  document.getElementById("eventTitle").value="";
+        <div class="task ${t.done ? "done" : ""}">
 
-  renderEvents();
+          <input
+            type="checkbox"
+            ${t.done ? "checked" : ""}
+            onchange="toggleTask(${t.id})">
 
-  alert("預約已建立！");
+          <span>${escapeHTML(t.text)}</span>
+
+          <button
+            class="danger"
+            onclick="deleteTask(${t.id})">
+            🗑️
+          </button>
+
+        </div>
+
+      `;
+
+    }).join("");
+
 }
 
 
-function renderEvents(){
+/* =========================
+   啟動
+========================= */
 
-  const box=document.getElementById("eventList");
-
-  if(events.length===0){
-    box.innerHTML='<p class="small">目前沒有預約。</p>';
-    return;
-  }
-
-  box.innerHTML=events.map((e,i)=>`
-
-    <div class="item">
-
-      <span>
-        <b>${e.title}</b><br>
-        <small>${e.date} ${e.time}</small>
-      </span>
-
-      <button onclick="deleteEvent(${i})">刪除</button>
-
-    </div>
-
-  `).join("");
-}
-
-
-function deleteEvent(i){
-
-  events.splice(i,1);
-
-  localStorage.setItem(
-    "events",
-    JSON.stringify(events)
-  );
-
-  renderEvents();
-}
+renderCustomers();
+renderTasks();
 
 </script>
 
